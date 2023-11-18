@@ -49,7 +49,7 @@ jobs:
     - name: 自定义的插件
       run: |
         rm -rf openwrt/package/lean/luci-theme-argon
-        git clone https://github.com/fw876/helloworld.git openwrt/package/luci-app-ssr-plus
+        git clone -b main https://github.com/fw876/helloworld.git openwrt/package/luci-app-ssr-plus
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git openwrt/package/luci-theme-argon
         git clone https://github.com/jerrykuku/luci-app-argon-config.git openwrt/package/luci-app-argon-config
         git clone -b lede https://github.com/pymumu/luci-app-smartdns openwrt/package/luci-app-smartdns
@@ -103,12 +103,10 @@ jobs:
         # LuCI插件
         cat >> .config <<EOF
         CONFIG_PACKAGE_luci-app-ssr-plus=y
-        CONFIG_PACKAGE_luci-app-adbyby-plus=y
         CONFIG_PACKAGE_luci-app-unblockmusic=y
         CONFIG_PACKAGE_luci-app-ttyd=y
         CONFIG_PACKAGE_luci-app-webadmin=y
         CONFIG_PACKAGE_luci-app-wol=y
-        CONFIG_PACKAGE_luci-app-smartdns=y
         CONFIG_PACKAGE_luci-app-filetransfer=y
         CONFIG_PACKAGE_luci-app-sfe=y
         CONFIG_PACKAGE_UnblockNeteaseMusic=y
@@ -175,6 +173,8 @@ jobs:
         # CONFIG_PACKAGE_luci-app-upnp is not set
         # CONFIG_PACKAGE_luci-app-jd-dailybonus is not set
         # CONFIG_PACKAGE_luci-app-uugamebooster is not set
+        # CONFIG_PACKAGE_luci-app-wireguard is not set
+        # CONFIG_PACKAGE_luci-app-diskman is not set
         EOF
         
         sed -i 's/^[ \t]*//g' ./.config
